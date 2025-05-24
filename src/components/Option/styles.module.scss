@@ -1,0 +1,30 @@
+.option {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "cover name"
+    "cover artist-album";
+  background-color: white;
+  height: 100px;
+  color: black;
+  text-align: left;
+}
+
+.option img {
+  grid-area: cover;
+  max-height: 100%;
+  width: auto;
+}
+
+.option h3 {
+  grid-area: name;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.option p {
+  grid-area: artist-album;
+  font-size: 1rem;
+  margin: 0;
+}
