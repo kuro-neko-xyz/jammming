@@ -24,8 +24,17 @@ const MOCKUP_DATA: Tracks = [
   },
 ];
 
-const searchBarTransform = () => {
-  return MOCKUP_DATA;
+const searchBarTransform = (input: string) => {
+  return MOCKUP_DATA.filter((track) => {
+    if (!input) return false;
+    const searchTerm = input.toLowerCase();
+
+    const doesNameMatch = track.name.toLowerCase().includes(searchTerm);
+    const doesArtistMatch = track.artist.toLowerCase().includes(searchTerm);
+    const doesAlbumMatch = track.album.toLowerCase().includes(searchTerm);
+
+    return doesNameMatch || doesArtistMatch || doesAlbumMatch;
+  });
 };
 
 export default searchBarTransform;
