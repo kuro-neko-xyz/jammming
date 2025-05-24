@@ -1,10 +1,21 @@
+import searchBarTransform from "../../transforms/SearchBar";
+import Option from "../Option";
+
 const SearchBar = () => {
+  const data = searchBarTransform();
+
   return (
     <form>
-      <input id="search" list="suggestions" name="search" type="text" />
-      <datalist id="suggestions">
-        <option value="Suggestion 1" />
-      </datalist>
+      <input id="search" name="search" type="text" />
+      {data.map((item) => (
+        <Option
+          key={`${item.name}-${item.artist}`}
+          name={item.name}
+          artist={item.artist}
+          album={item.album}
+          cover={item.cover}
+        />
+      ))}
     </form>
   );
 };
