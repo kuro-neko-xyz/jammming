@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  background-color: #7B287D50;
+  border-radius: 20px;
+  border: 4px solid #7B287D;
+}
