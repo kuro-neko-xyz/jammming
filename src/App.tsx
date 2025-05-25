@@ -1,12 +1,20 @@
+import { useState } from "react";
 import styles from "./App.module.scss";
 import Playlist from "./components/Playlist";
 import SearchBar from "./components/SearchBar";
+import type { Track, Tracks } from "./models/Track";
 
 function App() {
+  const [playlist, setPlaylist] = useState<Tracks>([]);
+
+  const handleAddTrack = (track: Track) => {
+    setPlaylist((prev) => [...prev, track]);
+  };
+
   return (
     <div className={styles.app}>
-      <SearchBar />
-      <Playlist />
+      <SearchBar onTrackClick={handleAddTrack} />
+      <Playlist playlist={playlist} />
     </div>
   );
 }

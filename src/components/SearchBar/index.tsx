@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FC } from "react";
 import searchBarTransform from "../../transforms/SearchBar";
 import Option from "../Option";
-import { type Tracks } from "../../models/Track";
+import { type Track, type Tracks } from "../../models/Track";
 import styles from "./styles.module.scss";
 
-const SearchBar = () => {
+interface SearchBarProps {
+  onTrackClick: (track: Track) => void;
+}
+
+const SearchBar: FC<SearchBarProps> = ({ onTrackClick }) => {
   const [input, setInput] = useState("");
-  const [data, setData] = useState([] as Tracks);
+  const [data, setData] = useState<Tracks>([]);
 
   useEffect(() => {
     try {
@@ -35,13 +39,11 @@ const SearchBar = () => {
         type="text"
         value={input}
       />
-      {data.map((item) => (
+      {data.map((track) => (
         <Option
-          key={`${item.name}-${item.artist}`}
-          name={item.name}
-          artist={item.artist}
-          album={item.album}
-          cover={item.cover}
+          key={`${track.name}-${track.artist}`}
+          onClick={onTrackClick}
+          track={track}
         />
       ))}
     </form>
