@@ -11,7 +11,7 @@ interface PlaylistProps {
 const Playlist: FC<PlaylistProps> = ({ onTrackClick, playlist }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.content}>
+      <div className={playlist.length ? styles.playlist : styles.emptyPlaylist}>
         {playlist.map((track) => (
           <TrackInPlaylist
             key={`${track.name}-${track.artist}`}
