@@ -8,7 +8,15 @@ function App() {
   const [playlist, setPlaylist] = useState<Tracks>([]);
 
   const handleAddTrack = (track: Track) => {
-    setPlaylist((prev) => [...prev, track]);
+    const isTrackInPlaylist = playlist.some(
+      (t) =>
+        t.artist === track.artist &&
+        t.name === track.name &&
+        t.album === track.album
+    );
+    if (!isTrackInPlaylist) {
+      setPlaylist((prev) => [...prev, track]);
+    }
   };
 
   return (
