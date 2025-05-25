@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import searchBarTransform from "../../transforms/SearchBar";
 import Option from "../Option";
 import { type Tracks } from "../../models/Track";
+import styles from "./styles.module.scss";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -27,6 +28,7 @@ const SearchBar = () => {
   return (
     <form onSubmit={handleFormSubmit}>
       <input
+        className={styles.input}
         id="search"
         name="search"
         onChange={handleInputChange}
