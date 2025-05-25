@@ -13,6 +13,7 @@ const TrackInPlaylist: FC<TrackInPlaylistProps> = ({ onTrackClick, track }) => {
       aria-label={`Remove ${track.name} from playlist`}
       className={styles.cover}
       onClick={() => onTrackClick(track)}
+      title={`${track.artist} - ${track.name}`}
     >
       <img
         alt={`${track.album} album cover`}
