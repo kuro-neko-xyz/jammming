@@ -18,6 +18,10 @@
   flex-wrap: wrap;
   align-content: flex-start;
   transition: all 0.3s ease-in-out;
+
+  .form {
+    display: none;
+  }
 }
 
 .playlist {
@@ -32,4 +36,11 @@
   flex-wrap: wrap;
   align-content: flex-start;
   transition: all 0.3s ease-in-out;
+}
+
+.form {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
 }
