@@ -19,7 +19,8 @@
   align-content: flex-start;
   transition: all 0.3s ease-in-out;
 
-  .form {
+  .title,
+  .submit {
     display: none;
   }
 }
@@ -38,7 +39,13 @@
   transition: all 0.3s ease-in-out;
 }
 
-.form {
+.title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.submit {
   position: absolute;
   bottom: 40px;
   left: 50%;
