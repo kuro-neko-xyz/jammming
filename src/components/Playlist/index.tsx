@@ -1,21 +1,22 @@
 import type { FC } from "react";
 import styles from "./styles.module.scss";
-import type { Tracks } from "../../models/Track";
+import type { Track, Tracks } from "../../models/Track";
+import TrackInPlaylist from "../TrackInPlaylist";
 
 interface PlaylistProps {
+  onTrackClick: (track: Track) => void;
   playlist: Tracks;
 }
 
-const Playlist: FC<PlaylistProps> = ({ playlist }) => {
+const Playlist: FC<PlaylistProps> = ({ onTrackClick, playlist }) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         {playlist.map((track) => (
-          <img
-            alt={`${track.album} album cover`}
-            className={styles.cover}
+          <TrackInPlaylist
             key={`${track.name}-${track.artist}`}
-            src={track.cover}
+            onTrackClick={onTrackClick}
+            track={track}
           />
         ))}
       </div>

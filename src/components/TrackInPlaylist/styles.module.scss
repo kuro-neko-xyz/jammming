@@ -1,0 +1,47 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-15deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(15deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.cover {
+  margin: 15px;
+  animation: rotate 2s infinite;
+  padding: 0;
+}
+
+.cover img {
+  width: 50px;
+  height: 50px;
+}
+
+.cover span {
+  background-color: red;
+  height: 20px;
+  display: block;
+  width: 20px;
+  line-height: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}

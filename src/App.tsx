@@ -19,10 +19,21 @@ function App() {
     }
   };
 
+  const handleRemoveTrack = (track: Track) => {
+    setPlaylist((prev) =>
+      prev.filter(
+        (t) =>
+          t.artist !== track.artist ||
+          t.name !== track.name ||
+          t.album !== track.album
+      )
+    );
+  };
+
   return (
     <div className={styles.app}>
       <SearchBar onTrackClick={handleAddTrack} />
-      <Playlist playlist={playlist} />
+      <Playlist onTrackClick={handleRemoveTrack} playlist={playlist} />
     </div>
   );
 }
