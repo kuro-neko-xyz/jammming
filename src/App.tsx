@@ -3,6 +3,7 @@ import styles from "./App.module.scss";
 import Playlist from "./components/Playlist";
 import SearchBar from "./components/SearchBar";
 import type { Track, Tracks } from "./models/Track";
+import logo from "./assets/logo.jpg";
 
 function App() {
   const [playlist, setPlaylist] = useState<Tracks>([]);
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <div className={styles.app}>
+      <img className={styles.logo} src={logo} alt="Jamming logo" />
       <SearchBar onTrackClick={handleAddTrack} />
       <Playlist onTrackClick={handleRemoveTrack} playlist={playlist} />
     </div>
