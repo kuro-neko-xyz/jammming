@@ -1,0 +1,8 @@
+{
+  "moduleNameMapper": {
+    "^.+\\.(css|less|scss)$": "babel-jest"
+  },
+  "transform": {
+    "^.+\\.[t|j]sx?$": "babel-jest"
+  }
+}
