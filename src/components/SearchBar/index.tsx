@@ -6,20 +6,35 @@ import styles from "./styles.module.scss";
 
 interface SearchBarProps {
   onTrackClick: (track: Track) => void;
+  token: string;
 }
 
-const SearchBar: FC<SearchBarProps> = ({ onTrackClick }) => {
+const SearchBar: FC<SearchBarProps> = ({ onTrackClick, token }) => {
   const [input, setInput] = useState("");
   const [data, setData] = useState<Tracks>([]);
 
+  const fetchData = () => {
+    searchBarTransform(input, token)
+      .then((response) => {
+        setData(response);
+      })
+      .catch((error) => {
+        console.error("Error fetching search results:", error);
+        setData([]);
+      });
+  };
+
   useEffect(() => {
-    try {
-      const response = searchBarTransform(input);
-      setData(response);
-    } catch (error) {
-      console.error("Error fetching data:", error);
+    if (input) {
+      const delay = setTimeout(() => {
+        fetchData();
+      }, 300);
+
+      return () => clearTimeout(delay);
+    } else {
+      setData([]);
     }
-  }, [input]);
+  }, [input, token]);
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -40,11 +55,7 @@ const SearchBar: FC<SearchBarProps> = ({ onTrackClick }) => {
         value={input}
       />
       {data.map((track) => (
-        <Option
-          key={`${track.name}-${track.artist}`}
-          onClick={onTrackClick}
-          track={track}
-        />
+        <Option key={track.uri} onClick={onTrackClick} track={track} />
       ))}
     </form>
   );

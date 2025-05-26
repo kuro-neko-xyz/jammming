@@ -48,7 +48,7 @@ const Playlist: FC<PlaylistProps> = ({ onTrackClick, playlist }) => {
         <div className={styles.songsContainer}>
           {playlist.map((track) => (
             <TrackInPlaylist
-              key={`${track.name}-${track.artist}`}
+              key={track.uri}
               onTrackClick={onTrackClick}
               track={track}
             />

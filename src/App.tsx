@@ -121,7 +121,7 @@ function App() {
       {accessToken && (
         <div className={styles.appContent}>
           <img className={styles.logo} src={logo} alt="Jamming logo" />
-          <SearchBar onTrackClick={handleAddTrack} />
+          <SearchBar onTrackClick={handleAddTrack} token={accessToken} />
           <Playlist onTrackClick={handleRemoveTrack} playlist={playlist} />
         </div>
       )}
