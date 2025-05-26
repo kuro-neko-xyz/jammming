@@ -7,9 +7,16 @@ import playlistTransform from "../../transforms/Playlist";
 interface PlaylistProps {
   onTrackClick: (track: Track) => void;
   playlist: Tracks;
+  setPlaylist: (playlist: Tracks) => void;
+  token: string;
 }
 
-const Playlist: FC<PlaylistProps> = ({ onTrackClick, playlist }) => {
+const Playlist: FC<PlaylistProps> = ({
+  onTrackClick,
+  playlist,
+  setPlaylist,
+  token,
+}) => {
   const [name, setName] = useState("");
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,8 +37,18 @@ const Playlist: FC<PlaylistProps> = ({ onTrackClick, playlist }) => {
     const newPlaylist = {
       name: name.trim(),
       tracks: playlist,
+      token,
     };
-    playlistTransform(newPlaylist);
+    playlistTransform(newPlaylist)
+      .then(() => {
+        setName("");
+        setPlaylist([]);
+        alert("Playlist saved successfully!");
+      })
+      .catch((error) => {
+        console.error("Error saving playlist:", error);
+        alert("Failed to save playlist. Please try again.");
+      });
   };
 
   return (

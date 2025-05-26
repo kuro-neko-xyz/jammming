@@ -122,7 +122,12 @@ function App() {
         <div className={styles.appContent}>
           <img className={styles.logo} src={logo} alt="Jamming logo" />
           <SearchBar onTrackClick={handleAddTrack} token={accessToken} />
-          <Playlist onTrackClick={handleRemoveTrack} playlist={playlist} />
+          <Playlist
+            onTrackClick={handleRemoveTrack}
+            playlist={playlist}
+            setPlaylist={setPlaylist}
+            token={accessToken}
+          />
         </div>
       )}
     </div>
